@@ -1,5 +1,6 @@
 package pl.dfurman.voter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,17 +12,14 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "voter")
 public class VoterController {
+    private final VoterService voterService;
 
-    @GetMapping
-    public List<Voter> hello() {
-        return List.of(
-                new Voter(
-                        1L,
-                        "John",
-                        "Travolta",
-                        "jtrav@band.com",
-                        LocalDate.of(2001, Month.APRIL, 20)
-                )
-        );
+    @Autowired
+    public VoterController(VoterService voterService) {
+        this.voterService = voterService;
+    }
+
+    public List<Voter> getVoters() {
+    return voterService.getVoters();
     }
 }
