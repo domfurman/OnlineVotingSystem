@@ -38,6 +38,9 @@ public class Voter {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public Voter() {
+    }
+
     public Long getId() {
         return id;
     }
