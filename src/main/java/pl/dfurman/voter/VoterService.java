@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VoterService {
@@ -20,5 +21,13 @@ public class VoterService {
     @GetMapping
     public List<Voter> getVoters() {
         return voterRepository.findAll();
+    }
+
+    public void addNewVoter(Voter voter) {
+        Optional<Voter> voterOptional = voterRepository.findByEmail(voter.getEmail());
+        if (voterOptional.isPresent()) {
+            throw new IllegalStateException("email taken");
+        }
+        voterRepository.save(voter);
     }
 }

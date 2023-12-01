@@ -1,9 +1,7 @@
 package pl.dfurman.voter;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -22,5 +20,10 @@ public class VoterController {
     @GetMapping
     public List<Voter> getVoters() {
         return voterService.getVoters();
+    }
+
+    @PostMapping
+    public void registerNewVoter(@RequestBody Voter voter) {
+        voterService.addNewVoter(voter);
     }
 }

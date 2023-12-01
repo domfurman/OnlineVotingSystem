@@ -3,6 +3,7 @@ package pl.dfurman.voter;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table
@@ -22,6 +23,8 @@ public class Voter {
     private String lastName;
     private String email;
     private LocalDate dateOfBirth;
+    @Transient
+    private Integer age;
 
     public Voter(Long id, String firstName, String lastName, String email, LocalDate dateOfBirth) {
         this.id = id;
@@ -79,6 +82,10 @@ public class Voter {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Integer getAge() {
+        return Period.between(getDateOfBirth(), LocalDate.now()).getYears() ;
     }
 
     @Override
