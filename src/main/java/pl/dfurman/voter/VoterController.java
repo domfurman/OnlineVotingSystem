@@ -19,7 +19,8 @@ public class VoterController {
         this.voterService = voterService;
     }
 
+    @GetMapping
     public List<Voter> getVoters() {
-    return voterService.getVoters();
+        return voterService.getVoters();
     }
 }
