@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "voter")
+@RequestMapping(path = "voters")
 public class VoterController {
     private final VoterService voterService;
 
@@ -34,7 +34,8 @@ public class VoterController {
     @PutMapping(path = "{voterId}")
     public void updateVoter(@PathVariable("voterId") Long voterId,
                             @RequestParam(required = false) String firstName,
+                            @RequestParam(required = false) String lastName,
                             @RequestParam(required = false) String email) {
-        voterService.updateVoter(voterId, firstName, email);
+        voterService.updateVoter(voterId, firstName, lastName, email);
     }
 }

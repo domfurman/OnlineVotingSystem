@@ -40,12 +40,15 @@ public class VoterService {
     }
 
     @Transactional
-    public void updateVoter(Long voterId, String firstName, String email) {
+    public void updateVoter(Long voterId, String firstName, String lastName, String email) {
         Voter voter = voterRepository.findById(voterId).orElseThrow(
                 () -> new IllegalStateException("voter with id " + voterId + " not found")
         );
         if (firstName != null && !firstName.isEmpty() && !Objects.equals(voter.getFirstName(), firstName)) {
             voter.setFirstName(firstName);
+        }
+        if (lastName != null && !lastName.isEmpty() && !Objects.equals(voter.getLastName(), lastName)) {
+            voter.setLastName(lastName);
         }
         if (email != null && !email.isEmpty() && !Objects.equals(voter.getEmail(), email)) {
             Optional<Voter> voterOptional = voterRepository.findByEmail(email);
@@ -54,6 +57,5 @@ public class VoterService {
             }
             voter.setEmail(email);
         }
-
     }
 }
