@@ -1,4 +1,4 @@
-package pl.dfurman.voter;
+package pl.dfurman.user;
 
 import jakarta.persistence.*;
 
@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import java.time.Period;
 
 @Entity
-@Table(name = "voters")
-public class Voter {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE
@@ -24,7 +24,7 @@ public class Voter {
     @Transient
     private Integer age;
 
-    public Voter(Long id, String firstName, String lastName, String email, LocalDate dateOfBirth) {
+    public User(Long id, String firstName, String lastName, String email, LocalDate dateOfBirth) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,14 +32,14 @@ public class Voter {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Voter(String firstName, String lastName, String email, LocalDate dateOfBirth) {
+    public User(String firstName, String lastName, String email, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Voter() {
+    public User() {
     }
 
     public Long getId() {

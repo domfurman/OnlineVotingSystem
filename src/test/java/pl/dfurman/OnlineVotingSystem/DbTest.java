@@ -3,8 +3,8 @@ package pl.dfurman.OnlineVotingSystem;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.dfurman.voter.Voter;
-import pl.dfurman.voter.VoterRepository;
+import pl.dfurman.user.User;
+import pl.dfurman.user.UserRepository;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -13,9 +13,9 @@ import java.time.Month;
 public class DbTest {
 
     @Autowired
-    VoterRepository voterRepository;
-    public Voter thereIsVoter() {
-        return new Voter(
+    UserRepository userRepository;
+    public User thereIsVoter() {
+        return new User(
                 "Cristiano",
                 "Ronaldo",
                 "cr7@gmail.com",
@@ -25,8 +25,8 @@ public class DbTest {
 
     @Test
     void itAllowsToAddVoterToDatabase() {
-        Voter exampleVoter = thereIsVoter();
-        voterRepository.save(exampleVoter);
-        assert voterRepository.findByEmail("cr7@gmail.com").isPresent();
+        User exampleUser = thereIsVoter();
+        userRepository.save(exampleUser);
+        assert userRepository.findByEmail("cr7@gmail.com").isPresent();
     }
 }

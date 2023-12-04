@@ -1,4 +1,4 @@
-package pl.dfurman.voter;
+package pl.dfurman.user;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -9,18 +9,18 @@ import java.time.Month;
 import java.util.List;
 
 @Configuration
-public class VoterConfig {
+public class UserConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(VoterRepository repository) {
+    CommandLineRunner commandLineRunner(UserRepository repository) {
         return args -> {
-            Voter john = new Voter(
+            User john = new User(
                     "John",
                     "Travolta",
                     "jtrav@band.com",
                     LocalDate.of(2001, Month.APRIL, 20)
             );
-            Voter edgar = new Voter(
+            User edgar = new User(
                     "Edgar",
                     "Davids",
                     "edavids@band.com",
