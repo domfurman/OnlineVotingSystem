@@ -6,27 +6,32 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.List;
 
 @Configuration
 public class UserConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(UserRepository repository) {
+    CommandLineRunner commandLineRunner(JdbcUserRepository repository) {
         return args -> {
-            User john = new User(
-                    "John",
-                    "Travolta",
-                    "jtrav@band.com",
-                    LocalDate.of(2001, Month.APRIL, 20)
-            );
-            User edgar = new User(
-                    "Edgar",
-                    "Davids",
-                    "edavids@band.com",
-                    LocalDate.of(2003, Month.SEPTEMBER, 11)
-            );
+            try {
+                User john = new User(
+                        "John",
+                        "Travolta",
+                        "jtrav@band.com",
+                        LocalDate.of(2001, Month.APRIL, 20)
+                );
+                User edgar = new User(
+                        "Edgar",
+                        "Davids",
+                        "edavids@band.com",
+                        LocalDate.of(2003, Month.SEPTEMBER, 11)
+                );
 //        repository.saveAll(List.of(john, edgar));
+                repository.save(john);
+                repository.save(edgar);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         };
     }
 }

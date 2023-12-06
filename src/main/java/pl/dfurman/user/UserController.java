@@ -20,21 +20,21 @@ public class UserController {
         return userService.getUsers();
     }
 
-//    @PostMapping
-//    public void registerNewUser(@RequestBody User user) {
-//        userService.addNewUser(user);
-//    }
-//
-//    @DeleteMapping(path = "{userId}")
-//    public void deleteUser(@PathVariable("userId") Long voterId) {
-//        userService.deleteUser(voterId);
-//    }
-//
-//    @PutMapping(path = "{userId}")
-//    public void updateUser(@PathVariable("userId") Long voterId,
-//                            @RequestParam(required = false) String firstName,
-//                            @RequestParam(required = false) String lastName,
-//                            @RequestParam(required = false) String email) {
-//        userService.updateUser(voterId, firstName, lastName, email);
-//    }
+    @PostMapping
+    public void registerNewUser(@RequestBody User user) {
+        userService.addNewUser(user);
+    }
+
+    @DeleteMapping(path = "{userId}")
+    public void deleteUser(@PathVariable("userId") int userId) {
+        userService.deleteUser(userId);
+    }
+
+    @PutMapping(path = "{userId}")
+    public void updateUser(@PathVariable("userId") int userId,
+                            @RequestParam(required = false) String firstName,
+                            @RequestParam(required = false) String lastName,
+                            @RequestParam(required = false) String email) {
+        userService.updateUser(userId, firstName, lastName, email);
+    }
 }
