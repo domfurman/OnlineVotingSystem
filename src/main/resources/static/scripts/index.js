@@ -1,0 +1,3 @@
+// const addStaticVoting= () => {
+//     return fetch(``)
+// }

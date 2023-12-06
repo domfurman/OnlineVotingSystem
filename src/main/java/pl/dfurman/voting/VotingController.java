@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping(path = "/votings")
 public class VotingController {
     private final VotingService votingService;
 
@@ -24,4 +24,5 @@ public class VotingController {
     public void addNewVoting(@RequestBody Voting voting) {
         votingService.addNewVoting(voting);
     }
+
 }
