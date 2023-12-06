@@ -26,7 +26,7 @@ public class UserConfig {
                     "edavids@band.com",
                     LocalDate.of(2003, Month.SEPTEMBER, 11)
             );
-        repository.saveAll(List.of(john, edgar));
+//        repository.saveAll(List.of(john, edgar));
         };
     }
 }
