@@ -8,20 +8,12 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity
-@Table(name = "votings")
 public class Voting {
-    @Id
     private UUID voteUUID;
-    @Column(name = "vote_name")
     private String voteName;
-    @Column(name = "votes_for")
     private Integer votesFor;
-    @Column(name = "votes_against")
     private Integer votesAgainst;
-    @Column(name = "creation_date")
     private LocalDate creationDate;
-    @Column(name = "validity_date")
     private LocalDate validityDate;
 
     public Voting(UUID voteUUID, String voteName, Integer votesFor, Integer votesAgainst, LocalDate creationDate, LocalDate validityDate) {
@@ -56,4 +48,19 @@ public class Voting {
         this.validityDate = validityDate;
     }
 
+    public Integer getVotesFor() {
+        return votesFor;
+    }
+
+    public void setVotesFor(Integer votesFor) {
+        this.votesFor = votesFor;
+    }
+
+    public Integer getVotesAgainst() {
+        return votesAgainst;
+    }
+
+    public void setVotesAgainst(Integer votesAgainst) {
+        this.votesAgainst = votesAgainst;
+    }
 }

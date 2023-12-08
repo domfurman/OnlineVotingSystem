@@ -1,4 +1,6 @@
-package pl.dfurman.user;
+package pl.dfurman.user.userrepository;
+
+import pl.dfurman.user.User;
 
 import java.util.List;
 

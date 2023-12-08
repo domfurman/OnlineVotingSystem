@@ -1,10 +1,11 @@
-package pl.dfurman.user;
+package pl.dfurman.user.userrepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import pl.dfurman.user.User;
 
 import java.util.List;
 

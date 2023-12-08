@@ -3,6 +3,7 @@ package pl.dfurman.user;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.dfurman.user.userrepository.JdbcUserRepository;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -27,8 +28,8 @@ public class UserConfig {
                         LocalDate.of(2003, Month.SEPTEMBER, 11)
                 );
 //        repository.saveAll(List.of(john, edgar));
-                repository.save(john);
-                repository.save(edgar);
+//                repository.save(john);
+//                repository.save(edgar);
             } catch (Exception e) {
                 e.printStackTrace();
             }

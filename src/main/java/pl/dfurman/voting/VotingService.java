@@ -12,20 +12,20 @@ import java.util.UUID;
 
 @Service
 public class VotingService {
-    private final VotingRepository votingRepository;
+//    private final VotingRepository votingRepository;
 
-    @Autowired
-    public VotingService(VotingRepository votingRepository) {
-        this.votingRepository = votingRepository;
-    }
+//    @Autowired
+//    public VotingService(VotingRepository votingRepository) {
+//        this.votingRepository = votingRepository;
+//    }
 
-    public List<Voting> getVotings() {
-        return votingRepository.findAll();
-    }
-
-    public void addNewVoting(Voting voting) {
-        votingRepository.save(voting);
-    }
+//    public List<Voting> getVotings() {
+//        return votingRepository.findAll();
+//    }
+//
+//    public void addNewVoting(Voting voting) {
+//        votingRepository.save(voting);
+//    }
 
 //    public void addNewStaticVoting(Voting voting) {
 //        votingRepository.save(

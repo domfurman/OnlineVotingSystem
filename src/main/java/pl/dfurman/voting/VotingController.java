@@ -8,21 +8,21 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/votings")
 public class VotingController {
-    private final VotingService votingService;
+//    private final VotingService votingService;
+//
+//    @Autowired
+//    public VotingController(VotingService votingService) {
+//        this.votingService = votingService;
+//    }
 
-    @Autowired
-    public VotingController(VotingService votingService) {
-        this.votingService = votingService;
-    }
-
-    @GetMapping
-    public List<Voting> getVotings() {
-        return votingService.getVotings();
-    }
-
-    @PostMapping
-    public void addNewVoting(@RequestBody Voting voting) {
-        votingService.addNewVoting(voting);
-    }
+//    @GetMapping
+//    public List<Voting> getVotings() {
+//        return votingService.getVotings();
+//    }
+//
+//    @PostMapping
+//    public void addNewVoting(@RequestBody Voting voting) {
+//        votingService.addNewVoting(voting);
+//    }
 
 }

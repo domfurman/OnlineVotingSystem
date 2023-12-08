@@ -3,7 +3,7 @@ package pl.dfurman.OnlineVotingSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.dfurman.user.User;
-import pl.dfurman.user.JdbcUserRepository;
+import pl.dfurman.user.userrepository.JdbcUserRepository;
 
 import java.time.LocalDate;
 import java.time.Month;
