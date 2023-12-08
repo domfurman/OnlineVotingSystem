@@ -1,10 +1,10 @@
 package pl.dfurman.voting.votingrepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import pl.dfurman.user.User;
 import pl.dfurman.voting.Voting;
 
 import java.util.List;
@@ -39,11 +39,42 @@ public class JdbcVotingRepository  implements VotingRepository{
 
     @Override
     public int deleteByUUID(UUID uuid) {
-        return 0;
+        if (existsByUUID(uuid)) {
+            jdbcTemplate.update("DELETE FROM users WHERE voteuuid=?", uuid);
+        }
+        return 200;
     }
 
     @Override
     public boolean existsByUUID(UUID uuid) {
-        return false;
+        try {
+            Voting votingByUUID = jdbcTemplate.queryForObject("SELECT * FROM voting WHERE voteuuid= ?",
+                    BeanPropertyRowMapper.newInstance(Voting.class), uuid);
+            return true;
+        } catch (IncorrectResultSizeDataAccessException e) {
+            return false;
+        }
     }
+
+    @Override
+    public Voting findByUUID(UUID uuid) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM votings WHERE voteuuid= ?",
+                    BeanPropertyRowMapper.newInstance(Voting.class), uuid);
+        } catch (IncorrectResultSizeDataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Voting findByName(String name) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM votings WHERE vote_name= ?",
+                    BeanPropertyRowMapper.newInstance(Voting.class), name);
+        } catch (IncorrectResultSizeDataAccessException e) {
+            return null;
+        }
+    }
+
+
 }

@@ -16,4 +16,8 @@ public interface VotingRepository {
 
     boolean existsByUUID(UUID uuid);
 
+    Voting findByUUID(UUID uuid);
+
+    Voting findByName(String name);
+
 }
