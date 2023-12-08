@@ -32,20 +32,16 @@ public class Voting {
         return voteUUID;
     }
 
+    public void setVoteUUID(UUID voteUUID) {
+        this.voteUUID = voteUUID;
+    }
+
     public String getVoteName() {
         return voteName;
     }
 
-    public LocalDate getCreationDate() {
-        return creationDate;
-    }
-
-    public LocalDate getValidityDate() {
-        return validityDate;
-    }
-
-    public void setValidityDate(LocalDate validityDate) {
-        this.validityDate = validityDate;
+    public void setVoteName(String voteName) {
+        this.voteName = voteName;
     }
 
     public Integer getVotesFor() {
@@ -62,5 +58,25 @@ public class Voting {
 
     public void setVotesAgainst(Integer votesAgainst) {
         this.votesAgainst = votesAgainst;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public LocalDate getValidityDate() {
+        return validityDate;
+    }
+
+    public void setValidityDate(LocalDate validityDate) {
+        this.validityDate = validityDate;
+    }
+
+    public String getUUIDStringRepresentation() {
+        return getVoteUUID().toString();
     }
 }
