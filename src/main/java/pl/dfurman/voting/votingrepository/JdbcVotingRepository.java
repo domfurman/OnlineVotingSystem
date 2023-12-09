@@ -40,7 +40,7 @@ public class JdbcVotingRepository  implements VotingRepository{
     @Override
     public int deleteByUUID(UUID uuid) {
         if (existsByUUID(uuid)) {
-            jdbcTemplate.update("DELETE FROM users WHERE voteuuid=?", uuid);
+            jdbcTemplate.update("DELETE FROM votings WHERE voteuuid= ?", uuid);
         }
         return 200;
     }
@@ -48,7 +48,7 @@ public class JdbcVotingRepository  implements VotingRepository{
     @Override
     public boolean existsByUUID(UUID uuid) {
         try {
-            Voting votingByUUID = jdbcTemplate.queryForObject("SELECT * FROM voting WHERE voteuuid= ?",
+            Voting votingByUUID = jdbcTemplate.queryForObject("SELECT * FROM votings WHERE voteuuid= ?",
                     BeanPropertyRowMapper.newInstance(Voting.class), uuid);
             return true;
         } catch (IncorrectResultSizeDataAccessException e) {
@@ -74,6 +74,22 @@ public class JdbcVotingRepository  implements VotingRepository{
         } catch (IncorrectResultSizeDataAccessException e) {
             return null;
         }
+    }
+
+    @Override
+    public int updateVotingName(Voting voting) {
+        Voting votingToUpdate = findByUUID(voting.getVoteUUID());
+
+        return jdbcTemplate.update("UPDATE votings SET vote_name= ? WHERE voteuuid= ?",
+                new Object[]{ voting.getVoteName(), voting.getVoteUUID() });
+    }
+
+    @Override
+    public int updateVotingValidityDate(Voting voting) {
+        Voting votingToUpdate = findByUUID(voting.getVoteUUID());
+
+        return jdbcTemplate.update("UPDATE votings SET validity_date= ? WHERE voteuuid= ?",
+                new Object[]{ voting.getValidityDate(), voting.getVoteUUID() });
     }
 
 

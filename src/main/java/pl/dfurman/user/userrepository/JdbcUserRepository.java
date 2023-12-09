@@ -58,12 +58,13 @@ public class JdbcUserRepository implements UserRepository {
 
     @Override
     public int deleteById(int id) {
-        if (existsById(id)) {
-            jdbcTemplate.update("DELETE FROM users WHERE id=?", id);
-        }
-        return 200;
+//        if (existsById(id)) {
+        return jdbcTemplate.update("DELETE FROM users WHERE id=?", id);
+//        }
+//        return 200;
     }
 
+    //not working
     @Override
     public boolean existsById(int id) {
         try {

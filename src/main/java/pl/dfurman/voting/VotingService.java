@@ -54,5 +54,8 @@ public class VotingService {
             voting.setValidityDate(newValidityDate);
         }
 
+        votingRepository.updateVotingName(voting);
+        votingRepository.updateVotingValidityDate(voting);
+
     }
 }

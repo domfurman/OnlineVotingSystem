@@ -20,4 +20,8 @@ public interface VotingRepository {
 
     Voting findByName(String name);
 
+    int updateVotingName(Voting voting);
+
+    int updateVotingValidityDate(Voting voting);
+
 }
