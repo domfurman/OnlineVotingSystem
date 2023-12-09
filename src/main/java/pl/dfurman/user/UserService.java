@@ -51,4 +51,8 @@ public class UserService {
             user.setEmail(email);
         }
     }
+
+    public User getUserById(int id) {
+        return jdbcUserRepository.findById(id);
+    }
 }
