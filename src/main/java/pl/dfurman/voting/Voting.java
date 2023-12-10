@@ -79,4 +79,12 @@ public class Voting {
     public String getUUIDStringRepresentation() {
         return getVoteUUID().toString();
     }
+
+    public void incrementVotesFor() {
+         setVotesFor(getVotesFor() + 5);
+    }
+
+    public void incrementVotesAgainst() {
+        setVotesAgainst(getVotesAgainst() + 1);
+    }
 }

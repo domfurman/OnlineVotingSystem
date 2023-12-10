@@ -58,4 +58,20 @@ public class VotingService {
         votingRepository.updateVotingValidityDate(voting);
 
     }
+
+    public void voteFor(UUID uuid) {
+        Voting voting = votingRepository.findByUUID(uuid);
+
+        voting.incrementVotesFor();
+
+        votingRepository.voteFor(voting);
+    }
+
+    public void voteAgainst(UUID uuid) {
+        Voting voting = votingRepository.findByUUID(uuid);
+
+        voting.incrementVotesAgainst();
+
+        votingRepository.voteAgainst(voting);
+    }
 }

@@ -92,5 +92,22 @@ public class JdbcVotingRepository  implements VotingRepository{
                 new Object[]{ voting.getValidityDate(), voting.getVoteUUID() });
     }
 
+    @Override
+    public int voteFor(Voting voting) {
+        Voting votingToUpdate = findByUUID(voting.getVoteUUID());
+
+        return jdbcTemplate.update("UPDATE votings SET votes_for= ? WHERE voteuuid= ?",
+                new Object[] {voting.getVotesFor(), voting.getVoteUUID()});
+    }
+
+    @Override
+    public int voteAgainst(Voting voting) {
+        Voting votingToUpdate = findByUUID(voting.getVoteUUID());
+
+        return jdbcTemplate.update("UPDATE votings SET votes_against= ? WHERE voteuuid= ?",
+                new Object[] {voting.getVotesAgainst(), voting.getVoteUUID()});
+
+    }
+
 
 }

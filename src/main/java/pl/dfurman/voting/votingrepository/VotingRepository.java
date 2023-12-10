@@ -24,4 +24,8 @@ public interface VotingRepository {
 
     int updateVotingValidityDate(Voting voting);
 
+    int voteFor(Voting voting);
+
+    int voteAgainst(Voting voting);
+
 }
