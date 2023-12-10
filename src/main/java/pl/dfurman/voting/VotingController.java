@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/votings")
+@RequestMapping(path = "/api/votings")
 public class VotingController {
     private final VotingService votingService;
 
