@@ -16,14 +16,14 @@ function createContent(voting) {
 }
 
 async function getAllVotings() {
-    const response = await fetch('/votings/Election2');
+    const response = await fetch('/votings');
     const vote = await response.json();
     return vote;
 }
 
 (async () => {
-    const voting = await getAllVotings();
-    createContent(voting);
+    const votings = await getAllVotings();
+    votings.map(voting => createContent(voting));
 })();
 // const ul = document.getElementById('votings-list');
 // const list = document.createDocumentFragment();
