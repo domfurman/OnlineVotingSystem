@@ -37,19 +37,24 @@ public class VotingController {
         votingService.addNewVoting(voting);
     }
 
-    @DeleteMapping(path = "{uuid}")
+    @DeleteMapping(path = "delete/{uuid}")
     public void deleteVotingByUUID(@PathVariable("uuid") UUID uuid) {
         votingService.deleteVotingByUUID(uuid);
     }
 
-//    @PutMapping(path = "{uuid}")
-//    public void updateVoting(@PathVariable("uuid") UUID uuid,
-//                             @RequestParam(required = false) String newName,
-//                             @RequestParam(required = false) LocalDate newValidityDate) {
-//        votingService.updateVoting(uuid, newName, newValidityDate);
-//    }
+    @PutMapping(path = "update/{uuid}")
+    public void updateVoting(@PathVariable("uuid") UUID uuid,
+                             @RequestParam(required = false) String newName,
+                             @RequestParam(required = false) LocalDate newValidityDate) {
+        votingService.updateVoting(uuid, newName, newValidityDate);
+    }
 
-    @PutMapping(path = "{uuid}")
+    @PutMapping(path = "vote_for/{uuid}")
+    public void voteFor(@PathVariable("uuid") UUID uuid) {
+        votingService.voteFor(uuid);
+    }
+
+    @PutMapping(path = "vote_against/{uuid}")
     public void voteAgainst(@PathVariable("uuid") UUID uuid) {
         votingService.voteAgainst(uuid);
     }
